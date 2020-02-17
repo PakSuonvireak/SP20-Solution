@@ -1,0 +1,23 @@
+  private void GetSelect(JList list1,JList list2)
+    {
+        DefaultListModel<String> Model1;
+        Model1 = (DefaultListModel<String>)list1.getModel();
+        DefaultListModel<String> Model2 = (DefaultListModel<String>)list2.getModel();
+        List<String> val = list1.getSelectedValuesList();
+        val.stream().map((temp) -> {
+            Model2.addElement(temp);
+            return temp;
+        }).forEachOrdered((temp) -> {
+            Model1.removeElement(temp);
+        });
+    }
+    private void MoveAll(JList list1,JList list2)
+    {
+        DefaultListModel<String> Model1 = (DefaultListModel<String>)list1.getModel();
+        DefaultListModel<String> Model2 = (DefaultListModel<String>)list2.getModel();
+        for(int i=0;i<Model1.size();i++)
+        {
+            Model2.addElement(Model1.getElementAt(i));
+        }
+        Model1.removeAllElements();
+    }
